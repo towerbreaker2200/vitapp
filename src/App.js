@@ -1,15 +1,22 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/nav/navbar";
-import Home from "./Routes/Home";
+import React, { useEffect, useState } from "react";
+import AppRouter from "./components/Router";
+import { authService } from "./firebase";
 
 function App() {
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    });
+  }, []);
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}</>
   );
 }
 

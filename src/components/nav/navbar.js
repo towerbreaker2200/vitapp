@@ -23,7 +23,7 @@ const Quick = styled.div`
   margin-right: 20px;
 `;
 
-function Navbar() {
+const Navbar = ({ isLoggedIn }) => {
   return (
     <Nav>
       <Menu>
@@ -33,10 +33,10 @@ function Navbar() {
         <Navsearch />
       </Search>
       <Quick>
-        <Navquick />
+        <Navquick isLoggedIn={isLoggedIn} />
       </Quick>
     </Nav>
   );
-}
+};
 
 export default Navbar;
