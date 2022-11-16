@@ -7,9 +7,12 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 64px;
+  z-index: 150;
+  background-color: #fff;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 `;
 
