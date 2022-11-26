@@ -1,7 +1,16 @@
-import Category from "../components/category/categorycontainer";
+import ICategory from "../components/category/Icategory";
 import Banner from "../components/banner";
 import styled from "styled-components";
 import MainSearch from "../components/mainsearch";
+import HCategory from "../components/category/Hcategory";
+import HscreenUpload from "../components/HscreenUpload";
+import QACategory from "../components/category/QAcategory";
+
+const Mainbody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const BannerContainer = styled.div`
   margin-top: 40px;
@@ -23,14 +32,17 @@ function Home() {
     document.documentElement.scrollTop = 0;
   };
   return (
-    <div>
+    <Mainbody>
       <BannerContainer>
         <Banner />
       </BannerContainer>
       <MainSearch />
-      <Category />
+      <ICategory />
+      <HscreenUpload />
+      <HCategory />
+      <QACategory />
       <TopBtn onClick={goTop}>↑</TopBtn>
-    </div>
+    </Mainbody>
   );
 }
 
